@@ -6,7 +6,8 @@ def power_turbine(U_wind, A_rotor, rho_air, deltau_wind, q):
     C_p = 0.5 * (1 + q) * (1 - q**2)
     v = U_wind * (1 - np.sqrt(deltau_wind))
     P = 0.5 * rho_air * A_rotor * v**3 * C_p
-    return v, P
+    return v, P.flatten()  # Flatten P array to make it 1D
+
 
 def velocity_def(N_turbine, k, xR, q):
     deltau_wind = np.zeros(N_turbine)

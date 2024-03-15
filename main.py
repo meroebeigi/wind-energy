@@ -80,7 +80,7 @@ with open('celldata.dat', 'w') as fileID:
                 ptotnew = sum(P)
                 fileID.write(f'{it} {mar} {ptotnew:.8f}\n')
 
-        # marching along the points
+        
 
 # Plotting Turbine Power (Sequential Optimization)
 plt.figure(3)
@@ -181,6 +181,12 @@ P_tot = sum(P)
 
 # Plotting Induction factor (minimize)
 plt.figure(7)
+plt.bar(range(1, N_turbine + 1), q)
+plt.grid(True)
+plt.xlabel('Turbine Number')
+plt.ylabel('q')
+
+plt.figure(8)
 plt.scatter(np.arange(N_turbine) * 12, np.zeros(N_turbine), s=200, c=solution, cmap='viridis', edgecolors='k')
 plt.grid(True)
 plt.title("Optimized q variation through each turbine")
@@ -188,14 +194,14 @@ c = plt.colorbar()
 c.set_label('q ')
 
 # Plotting Induction Turbine Power (minimize)
-plt.figure(8)
+plt.figure(9)
 plt.bar(range(1, N_turbine + 1), P)
 plt.title('Power produced with optimized q')
 plt.grid(True)
 plt.xlabel('Turbine number')
 plt.ylabel('Power [W]')
 
-plt.figure(9)
+plt.figure(10)
 plt.scatter(np.arange(N_turbine) * 12, np.zeros(N_turbine), s=200, c=P / 10**3, cmap='viridis', edgecolors='k')
 plt.grid(True)
 plt.title("Power produced with optimized q")
@@ -203,3 +209,8 @@ c = plt.colorbar()
 c.set_label('Power [kW]')
 
 plt.show()
+
+
+
+
+
